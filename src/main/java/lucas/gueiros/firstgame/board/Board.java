@@ -7,9 +7,12 @@ import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.List;
 import java.util.ArrayList;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements Runnable {
 
+  final static Logger logger = LogManager.getLogger(Board.class);
   public List<Drawable> drawables;
 
   public Board() {
@@ -25,6 +28,12 @@ public class Board extends JPanel {
     this.drawables.add(drawable);
   }
 
+  public void cycle() {
+    for(Drawable drawable : drawables) {
+      drawable.update();
+    }
+  }
+
   @Override
   public void paintComponent (Graphics g) {
     super.paintComponent(g);
@@ -32,6 +41,53 @@ public class Board extends JPanel {
     for(Drawable drawable : drawables) {
       drawable.draw(g2d);
     }
+  }
+
+  // coppied from http://zetcode.com/javagames/animation/
+  private final int B_WIDTH = 350;
+  private final int B_HEIGHT = 350;
+  private final int INITIAL_X = -40;
+  private final int INITIAL_Y = -40;
+  private final int DELAY = 25;
+  private Thread animator;
+
+  @Override
+  public void addNotify() {
+      super.addNotify();
+
+      animator = new Thread(this);
+      animator.start();
+  }
+
+  @Override
+  public void run() {
+
+      long beforeTime, timeDiff, sleep;
+
+      beforeTime = System.currentTimeMillis();
+
+      while (true) {
+
+          cycle();
+          repaint();
+
+          timeDiff = System.currentTimeMillis() - beforeTime;
+          sleep = DELAY - timeDiff;
+
+          if (sleep < 0) {
+              sleep = 2;
+          }
+
+          try {
+              Thread.sleep(sleep);
+          } catch (InterruptedException e) {
+
+              String msg = String.format("Thread interrupted: %s", e.getMessage());
+              logger.atError().log(msg);
+          }
+
+          beforeTime = System.currentTimeMillis();
+      }
   }
 
 }

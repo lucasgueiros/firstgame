@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import java.awt.Graphics2D;
 import lucas.gueiros.firstgame.util.Drawable;
 import java.awt.BasicStroke;
+import java.awt.Toolkit;
 
 public class ViewBoneman implements Drawable {
   private Image image;
@@ -29,7 +30,10 @@ public class ViewBoneman implements Drawable {
   public Dimension getSize(ImageObserver observer) {
     return new Dimension (image.getHeight(observer), image.getWidth(observer));
   }
-
+  public void update() {
+    this.positionX = this.positionX + 2;
+    this.positionY = this.positionY + 2;
+  }
   public void draw(Graphics2D g) {
     g = (Graphics2D) g.create();
     BasicStroke bs1 = new BasicStroke(4, BasicStroke.CAP_ROUND,
@@ -52,5 +56,6 @@ public class ViewBoneman implements Drawable {
     g.drawLine(positionX,positionY, positionX + legX, positionY + legY);
     // cabeca
     g.fillOval(positionX - raio, positionY - (2 *raio), 2 * raio, 2 * raio);
+    Toolkit.getDefaultToolkit().sync();
   }
 }
