@@ -10,29 +10,14 @@ import java.awt.BasicStroke;
 import java.awt.Toolkit;
 
 public class ViewBoneman implements Drawable {
-  private Image image;
-
   private Boneman boneman;
-
-  // esse ponto é o topo do pescoco
-  private int positionX;
-  private int positionY;
-
+  public ViewBoneman (Boneman boneman) {
+    this.boneman = boneman;
+  }
   public ViewBoneman () {
-    ImageIcon ii = new ImageIcon("src/main/resources/characters/boneman/boneman-relaxado.png");
-    image = ii.getImage();
-    positionX = 100;
-    positionY = 100;
-  }
-  public Image getImage() {
-    return image;
-  }
-  public Dimension getSize(ImageObserver observer) {
-    return new Dimension (image.getHeight(observer), image.getWidth(observer));
   }
   public void update() {
-    this.positionX = this.positionX + 2;
-    this.positionY = this.positionY + 2;
+    this.boneman.move();
   }
   public void draw(Graphics2D g) {
     g = (Graphics2D) g.create();
@@ -40,10 +25,13 @@ public class ViewBoneman implements Drawable {
                 BasicStroke.JOIN_BEVEL);
     g.setStroke(bs1);
 
+    int positionX = boneman.getPositionX();
+    int positionY = boneman.getPositionY();
     int positionYvirilia = positionY + 45;
     int legY = 20;
     int legX = 20;
     int raio = 10;
+
     // tronco
     g.drawLine(positionX,positionY,positionX, positionYvirilia);
     // perna esquerda

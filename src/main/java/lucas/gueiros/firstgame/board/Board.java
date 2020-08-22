@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import java.awt.event.KeyAdapter;
 
 public class Board extends JPanel implements Runnable {
 
@@ -18,6 +19,10 @@ public class Board extends JPanel implements Runnable {
   public Board() {
     initBoard();
     drawables = new ArrayList<>();
+  }
+
+  private void addKeyListener (KeyAdapter keyAdapter) {
+    addKeyListener(keyAdapter);
   }
 
   private void initBoard() {
