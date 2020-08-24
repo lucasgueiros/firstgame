@@ -2,7 +2,8 @@ package lucas.gueiros.firstgame.application;
 
 import javax.swing.JFrame;
 import lucas.gueiros.firstgame.board.Board;
-import lucas.gueiros.firstgame.characters.boneman.*;
+import lucas.gueiros.firstgame.characters.hobbits.Hobbit;
+import lucas.gueiros.firstgame.items.Ring;
 
 public class App extends JFrame
 {
@@ -11,10 +12,13 @@ public class App extends JFrame
   }
 
   private void initUi() {
-    Boneman boneman = new Boneman(100,100);
+    Hobbit frodo = new Hobbit(400,100);
+    Ring ring = new Ring(100,100,5);
+    frodo.getBoneman().setItemDireito(ring);
     Board board = new Board();
-    board.addDrawble(new ViewBoneman(boneman));
-    addKeyListener(new SpriteBoneman(boneman));
+    board.addDrawble(frodo);
+    board.addDrawble(ring);
+    //addKeyListener(new SpriteBoneman(boneman));
     add(board);
     pack();
     //setSize(250,200);

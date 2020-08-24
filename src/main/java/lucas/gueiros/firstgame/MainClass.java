@@ -9,7 +9,7 @@ public class MainClass {
   final static Logger logger = LogManager.getLogger(MainClass.class);
 
   public static void main (String [] args) {
-    logger.atInfo().log("Iniciando aplicação");
+    logger.atInfo().log("Iniciando o jogo");
     EventQueue.invokeLater(() -> {
             App ex = new App();
             ex.setVisible(true);

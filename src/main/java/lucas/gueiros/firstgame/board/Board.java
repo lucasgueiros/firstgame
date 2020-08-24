@@ -10,8 +10,9 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import java.awt.event.KeyAdapter;
+import java.awt.Color;
 
-public class Board extends JPanel implements Runnable {
+  public class Board extends JPanel implements Runnable {
 
   final static Logger logger = LogManager.getLogger(Board.class);
   public List<Drawable> drawables;
@@ -43,6 +44,8 @@ public class Board extends JPanel implements Runnable {
   public void paintComponent (Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
+    g2d.setColor(new Color(0,255,0));
+    g2d.fillRect(0,0,900,500);
     for(Drawable drawable : drawables) {
       drawable.draw(g2d);
     }
