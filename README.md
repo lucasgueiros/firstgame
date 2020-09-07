@@ -1,3 +1,3 @@
-# firstgame
+# Ludovicus, o Rei da França
 
-Não é meu primeiro jogo, mas meu primeiro jogo em java.
+Meu primeiro jogo em java.
