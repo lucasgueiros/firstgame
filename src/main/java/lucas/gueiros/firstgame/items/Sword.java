@@ -9,22 +9,15 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-public class Sword implements Item {
+public class Sword extends Item {
 
   public enum SwordStatus {HANDLE,ATTACK};
 
   public SwordStatus status = SwordStatus.HANDLE;
-  public int x;
-  public int y;
-  public int size;
-  public Drawable father;
   private final static Logger logger = LogManager.getLogger(Sword.class);
 
-  public void setFather(Drawable drawable) {
-    this.father = father;
-  }
-  public Drawable getFather() {
-    return this.father;
+  public Sword(int positionX, int positionY, int sizeX, int sizeY) {
+    super(positionX, positionY, sizeX, sizeY);
   }
 
   public SwordStatus getStatus() {
@@ -51,7 +44,7 @@ public class Sword implements Item {
         default:
           image = ImageIO.read(Sword.class.getResourceAsStream("/itens/sword.png"));
       }
-      g.drawImage(image, x, y, null);
+      g.drawImage(image, positionX, positionY, null);
     } catch (IOException e) {
       logger.error(e.toString());
     }
@@ -61,71 +54,6 @@ public class Sword implements Item {
 
   }
 
-	/**
-	* Returns value of x
-	* @return
-	*/
-	public int getPositionX() {
-		return x;
-	}
-
-	/**
-	* Sets new value of x
-	* @param
-	*/
-	public void setPositionX(int x) {
-		this.x = x;
-	}
-
-	/**
-	* Returns value of y
-	* @return
-	*/
-	public int getPositionY() {
-		return y;
-	}
-
-	/**
-	* Sets new value of y
-	* @param
-	*/
-	public void setPositionY(int y) {
-		this.y = y;
-	}
-
-	/**
-	* Returns value of size
-	* @return
-	*/
-	public int getSize() {
-		return size;
-	}
-
-	/**
-	* Sets new value of size
-	* @param
-	*/
-	public void setSize(int size) {
-		this.size = size;
-	}
-
-	/**
-	* Default empty Ring constructor
-	*/
-	public Sword() {
-		super();
-	}
-
-  /**
-	* Default Ring constructor
-	*/
-	public Sword(int x, int y) {
-		super();
-		this.x = x;
-		this.y = y;
-		this.size = 5;
-	}
-
   public void doAction() {
     this.setStatus(SwordStatus.ATTACK);
   }
@@ -134,13 +62,4 @@ public class Sword implements Item {
     this.setStatus(SwordStatus.HANDLE);
   }
 
-	/**
-	* Default Ring constructor
-	*/
-	public Sword(int x, int y, int size) {
-		super();
-		this.x = x;
-		this.y = y;
-		this.size = size;
-	}
 }

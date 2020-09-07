@@ -1,38 +1,25 @@
 package lucas.gueiros.firstgame.characters.boneman;
 
 import lucas.gueiros.firstgame.items.Item;
+import lucas.gueiros.firstgame.util.Drawable;
 
-public class Boneman {
-  private int positionX;
-  private int positionY;
+public abstract class Sprite extends Drawable {
+
   private int moveX;
   private int moveY;
-  private int sizeX;
-  private int sizeY;
 
-  public void move () {
-    this.positionX += moveX;
-    this.positionY += moveY;
+  public void update () {
+    super.positionX += moveX;
+    super.positionY += moveY;
   }
-
-	/**
-	* Default empty Boneman constructor
-	*/
-	public Boneman() {
-		super();
-	}
 
 	/**
 	* Default Boneman constructor
 	*/
-	public Boneman(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
-		super();
-		this.positionX = positionX;
-		this.positionY = positionY;
+	public Sprite(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
+		super(positionX, positionY, sizeX, sizeY);
 		this.moveX = moveX;
 		this.moveY = moveY;
-		this.sizeX = sizeX;
-		this.sizeY = sizeY;
 	}
 
 	/**
@@ -97,38 +84,6 @@ public class Boneman {
 	*/
 	public void setMoveY(int moveY) {
 		this.moveY = moveY;
-	}
-
-	/**
-	* Returns value of sizeX
-	* @return
-	*/
-	public int getSizeX() {
-		return sizeX;
-	}
-
-	/**
-	* Sets new value of sizeX
-	* @param
-	*/
-	public void setSizeX(int sizeX) {
-		this.sizeX = sizeX;
-	}
-
-	/**
-	* Returns value of sizeY
-	* @return
-	*/
-	public int getSizeY() {
-		return sizeY;
-	}
-
-	/**
-	* Sets new value of sizeY
-	* @param
-	*/
-	public void setSizeY(int sizeY) {
-		this.sizeY = sizeY;
 	}
 
 }

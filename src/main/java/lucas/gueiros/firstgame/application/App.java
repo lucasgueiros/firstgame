@@ -3,9 +3,8 @@ package lucas.gueiros.firstgame.application;
 import javax.swing.JFrame;
 import lucas.gueiros.firstgame.board.Board;
 import lucas.gueiros.firstgame.items.Sword;
-import lucas.gueiros.firstgame.characters.boneman.ViewBoneman;
-import lucas.gueiros.firstgame.characters.boneman.Boneman;
-import lucas.gueiros.firstgame.characters.boneman.SpriteBoneman;
+import lucas.gueiros.firstgame.characters.boneman.Ludovicus;
+import lucas.gueiros.firstgame.characters.boneman.CharacterUserController;
 
 public class App extends JFrame
 {
@@ -14,13 +13,13 @@ public class App extends JFrame
   }
 
   private void initUi() {
-    ViewBoneman ludovicus = new ViewBoneman(100,100,10,20,0,0);
-    Sword sword = new Sword(50,50,5);
+    Ludovicus ludovicus = new Ludovicus(100,100,10,20,0,0);
+    Sword sword = new Sword(0,0,7,16);
     ludovicus.setItemDireito(sword);
 
     Board board = new Board();
     board.addDrawble(ludovicus);
-    addKeyListener(new SpriteBoneman(ludovicus));
+    addKeyListener(new CharacterUserController(ludovicus));
     add(board);
     pack();
     //setSize(250,200);

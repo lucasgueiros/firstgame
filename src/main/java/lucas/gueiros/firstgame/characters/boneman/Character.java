@@ -14,7 +14,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 import lucas.gueiros.firstgame.items.Item;
 
-public class ViewBoneman extends Boneman implements Drawable {
+public abstract class Character extends Sprite {
   private Drawable father;
 
   public Drawable getFather() {
@@ -24,13 +24,13 @@ public class ViewBoneman extends Boneman implements Drawable {
     this.father = father;
   }
   public void update() {
-    super.move();
+    super.update();
   }
   public void draw(Graphics2D g) {
     g = (Graphics2D) g.create();
 
     try {
-      BufferedImage image = ImageIO.read(ViewBoneman.class.getResourceAsStream("/characters/ludovicus.png"));
+      BufferedImage image = ImageIO.read(Character.class.getResourceAsStream("/characters/ludovicus.png"));
       g.drawImage(image, super.getPositionX(), super.getPositionY(), null);
     } catch (IOException e) {
       g.setColor(new Color(0,255,0));
@@ -57,7 +57,7 @@ public class ViewBoneman extends Boneman implements Drawable {
 		return itemDireito;
 	}
 
-  public ViewBoneman(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
+  public Character(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
 		super(positionX, positionY, sizeX, sizeY, moveX, moveY);
   }
 
