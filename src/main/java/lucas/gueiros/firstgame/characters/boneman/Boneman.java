@@ -9,13 +9,10 @@ public class Boneman {
   private int moveY;
   private int sizeX;
   private int sizeY;
-  private Item itemDireito;
 
   public void move () {
     this.positionX += moveX;
     this.positionY += moveY;
-    this.itemDireito.setX(itemDireito.getX() + moveX);
-    this.itemDireito.setY(itemDireito.getY() + moveY);
   }
 
 	/**
@@ -28,15 +25,14 @@ public class Boneman {
 	/**
 	* Default Boneman constructor
 	*/
-	public Boneman(int positionX, int positionY, int size, int moveX, int moveY) {
+	public Boneman(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
 		super();
 		this.positionX = positionX;
 		this.positionY = positionY;
 		this.moveX = moveX;
 		this.moveY = moveY;
-		this.sizeX = size;
-		this.sizeY = size;
-		this.itemDireito = itemDireito;
+		this.sizeX = sizeX;
+		this.sizeY = sizeY;
 	}
 
 	/**
@@ -135,25 +131,4 @@ public class Boneman {
 		this.sizeY = sizeY;
 	}
 
-	/**
-	* Returns value of itemDireito
-	* @return
-	*/
-	public Item getItemDireito() {
-		return itemDireito;
-	}
-
-	/**
-	* Sets new value of itemDireito
-	* @param
-	*/
-	public void setItemDireito(Item itemDireito) {
-		this.itemDireito = itemDireito;
-    this.itemDireito.setX(positionX + sizeX);
-    this.itemDireito.setY(positionY + sizeY);
-	}
-
-  public boolean hasItemDireito() {
-    return this.itemDireito != null;
-  }
 }

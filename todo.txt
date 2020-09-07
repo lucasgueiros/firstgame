@@ -1,0 +1,31 @@
+desenhos:
+ - ludovicus:
+   - 4 posições
+   - com espada (x4posições)
+   - com arco (x4posições)
+   - com tocha e chama (x4posições)
+   - com tocha sem chama (x4posições)
+   - achei a chave (de frente)
+   - atacando?
+ - flecha em caminho
+ - um ou dois inimigos:
+   - dragao
+   - morcego
+   - jacaré (não mata com arco e flexa)
+   - aranha gigante (do tamanho dele mais ou menos)
+ - elementos da dangen:
+   - tochas (fica escuro se estiverem apagadas)
+      - apagadas
+      - acesas
+   - salas (podem estar escuras, daí precisa de tochas)
+   - paredes
+   - portas
+      - comuns
+      - trancadas de chave
+      - já destrancadas
+   - baús (é onde ficam as chaves)
+      - aberto
+      - fechado
+   - chão simples
+   - abismo
+   - ponte móvel (como acioná-la?)
