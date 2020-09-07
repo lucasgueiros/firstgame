@@ -1,7 +1,6 @@
-package lucas.gueiros.firstgame.characters.boneman;
+package com.lucasgueiros.ludovicus.generics;
 
-import lucas.gueiros.firstgame.items.Item;
-import lucas.gueiros.firstgame.util.Drawable;
+import com.lucasgueiros.ludovicus.items.Item;
 
 public abstract class Sprite extends Drawable {
 

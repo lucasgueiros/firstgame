@@ -1,3 +1,61 @@
+﻿historia: é preciso libertar os vassalos para poder ganhar a coroa no castelo!
+ - todos eles estão presos em castelos na frança com os bixos do escuro
+ - tem que criar os puzzles, aí é criatividade, mas a base é essa.
+
+pacotes:
+ - game
+   - Game
+   - Board
+   - ItemBagViewer (EAST)
+   - LifeViewer (NORTH)
+   - CommandViewer (SOUTH)
+   - MapViewer? (WEST)
+   - Story?? (controlar a historia do jogo?)
+ - world
+   - WorldMap
+   - MapPiece
+   - floor
+     - grass
+     - water
+     - rock
+     - castle
+     - bridge
+     - cave
+     - plantação
+  - items
+     - sword
+     - bow
+  - characters
+     - ludovicus
+     - campesian (aterrorisado ou trabalhando)
+ - castle
+  - CastleMap
+  - Room
+  - floor
+     - Floor
+     - Wall
+     - Door
+     - ponte
+     - abismo
+     - escada
+     - tocha fixa
+  - characters
+     - skeleton (morre com espada) -> tem as mesmas armas, então tem dois tipos. Eles também podem apagar o fogo!!
+     - arakna ( foge do fogo  - aranha gigante (do tamanho dele mais ou menos))
+     - bat (morre com flecha, foge do fogo, tentam proteger as tochas apagadas)
+     - vassalo
+  - items
+     - crown
+     - arrow
+     - torch
+     - flame
+     - key
+     - baú
+     - crown
+     - map
+   - triggers
+     - Trigger (pensar neles)
+
 desenhos:
  - ludovicus:
    - 4 posições
@@ -7,25 +65,3 @@ desenhos:
    - com tocha sem chama (x4posições)
    - achei a chave (de frente)
    - atacando?
- - flecha em caminho
- - um ou dois inimigos:
-   - dragao
-   - morcego
-   - jacaré (não mata com arco e flexa)
-   - aranha gigante (do tamanho dele mais ou menos)
- - elementos da dangen:
-   - tochas (fica escuro se estiverem apagadas)
-      - apagadas
-      - acesas
-   - salas (podem estar escuras, daí precisa de tochas)
-   - paredes
-   - portas
-      - comuns
-      - trancadas de chave
-      - já destrancadas
-   - baús (é onde ficam as chaves)
-      - aberto
-      - fechado
-   - chão simples
-   - abismo
-   - ponte móvel (como acioná-la?)

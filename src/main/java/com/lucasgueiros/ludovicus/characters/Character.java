@@ -1,18 +1,19 @@
-package lucas.gueiros.firstgame.characters.boneman;
+package com.lucasgueiros.ludovicus.characters;
 
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 import java.awt.Graphics2D;
-import lucas.gueiros.firstgame.util.Drawable;
+import com.lucasgueiros.ludovicus.generics.Drawable;
 import java.awt.BasicStroke;
 import java.awt.Toolkit;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
-import lucas.gueiros.firstgame.items.Item;
+import com.lucasgueiros.ludovicus.items.Item;
+import com.lucasgueiros.ludovicus.generics.Sprite;
 
 public abstract class Character extends Sprite {
   private Drawable father;
@@ -30,7 +31,7 @@ public abstract class Character extends Sprite {
     g = (Graphics2D) g.create();
 
     try {
-      BufferedImage image = ImageIO.read(Character.class.getResourceAsStream("/characters/ludovicus.png"));
+      BufferedImage image = ImageIO.read(Character.class.getResourceAsStream("/com/lucasgueiros/ludovicus/characters/ludovicus.png"));
       g.drawImage(image, super.getPositionX(), super.getPositionY(), null);
     } catch (IOException e) {
       g.setColor(new Color(0,255,0));

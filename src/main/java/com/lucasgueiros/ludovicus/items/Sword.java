@@ -1,8 +1,7 @@
-package lucas.gueiros.firstgame.items;
+package com.lucasgueiros.ludovicus.items;
 
 import java.awt.Color;
 import java.awt.Graphics2D;
-import lucas.gueiros.firstgame.util.Drawable;
 import java.awt.image.BufferedImage;
 import javax.imageio.ImageIO;
 import java.io.IOException;
@@ -36,13 +35,13 @@ public class Sword extends Item {
       BufferedImage image;
       switch(status) {
         case HANDLE:
-          image = ImageIO.read(Sword.class.getResourceAsStream("/itens/sword.png"));
+          image = ImageIO.read(Sword.class.getResourceAsStream("/com/lucasgueiros/ludovicus/items/sword.png"));
           break;
         case ATTACK:
-          image = ImageIO.read(Sword.class.getResourceAsStream("/itens/sword-attack.png"));
+          image = ImageIO.read(Sword.class.getResourceAsStream("/com/lucasgueiros/ludovicus/items/sword-attack.png"));
           break;
         default:
-          image = ImageIO.read(Sword.class.getResourceAsStream("/itens/sword.png"));
+          image = ImageIO.read(Sword.class.getResourceAsStream("/com/lucasgueiros/ludovicus/items/sword.png"));
       }
       g.drawImage(image, positionX, positionY, null);
     } catch (IOException e) {

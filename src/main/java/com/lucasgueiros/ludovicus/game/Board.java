@@ -1,8 +1,8 @@
-package lucas.gueiros.firstgame.board;
+package com.lucasgueiros.ludovicus.game;
 
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import lucas.gueiros.firstgame.util.Drawable;
+import com.lucasgueiros.ludovicus.generics.Drawable;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.List;
@@ -51,7 +51,7 @@ public class Board extends JPanel implements Runnable {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     try {
-      BufferedImage image = ImageIO.read(Board.class.getResourceAsStream("/ground/grass.png"));
+      BufferedImage image = ImageIO.read(Board.class.getResourceAsStream("/com/lucasgueiros/ludovicus/ground/grass.png"));
       TexturePaint texture = new TexturePaint(image, new Rectangle(25,25));
       g2d.setPaint(texture);
       g2d.setStroke(new BasicStroke(4.0F));

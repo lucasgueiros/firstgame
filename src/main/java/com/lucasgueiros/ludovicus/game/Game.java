@@ -1,14 +1,14 @@
-package lucas.gueiros.firstgame.application;
+package com.lucasgueiros.ludovicus.game;
 
 import javax.swing.JFrame;
-import lucas.gueiros.firstgame.board.Board;
-import lucas.gueiros.firstgame.items.Sword;
-import lucas.gueiros.firstgame.characters.boneman.Ludovicus;
-import lucas.gueiros.firstgame.characters.boneman.CharacterUserController;
+import com.lucasgueiros.ludovicus.game.Board;
+import com.lucasgueiros.ludovicus.items.Sword;
+import com.lucasgueiros.ludovicus.characters.Ludovicus;
+import com.lucasgueiros.ludovicus.controls.CharacterUserController;
 
-public class App extends JFrame
+public class Game extends JFrame
 {
-  public App () {
+  public Game () {
     initUi();
   }
 

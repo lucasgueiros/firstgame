@@ -1,6 +1,6 @@
-package lucas.gueiros.firstgame.items;
+package com.lucasgueiros.ludovicus.items;
 
-import lucas.gueiros.firstgame.util.Drawable;
+import com.lucasgueiros.ludovicus.generics.Drawable;
 
 
 public abstract class Item extends Drawable {

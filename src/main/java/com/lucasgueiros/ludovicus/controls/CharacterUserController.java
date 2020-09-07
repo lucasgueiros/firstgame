@@ -1,7 +1,8 @@
-package lucas.gueiros.firstgame.characters.boneman;
+package com.lucasgueiros.ludovicus.controls;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import com.lucasgueiros.ludovicus.characters.Character;
 
 public class CharacterUserController extends KeyAdapter {
   private Character character;

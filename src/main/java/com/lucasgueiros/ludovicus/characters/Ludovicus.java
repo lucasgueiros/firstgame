@@ -1,4 +1,4 @@
-package lucas.gueiros.firstgame.characters.boneman;
+package com.lucasgueiros.ludovicus.characters;
 
 public class Ludovicus extends Character {
   public Ludovicus(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {

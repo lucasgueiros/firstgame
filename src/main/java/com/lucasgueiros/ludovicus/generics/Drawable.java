@@ -1,4 +1,4 @@
-package lucas.gueiros.firstgame.util;
+package com.lucasgueiros.ludovicus.generics;
 
 import java.awt.Graphics2D;
 

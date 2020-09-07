@@ -1,7 +1,7 @@
 package lucas.gueiros.firstgame;
 
 import java.awt.EventQueue;
-import lucas.gueiros.firstgame.application.App;
+import com.lucasgueiros.ludovicus.game.Game;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -11,7 +11,7 @@ public class MainClass {
   public static void main (String [] args) {
     logger.atInfo().log("Iniciando o jogo");
     EventQueue.invokeLater(() -> {
-            App ex = new App();
+            Game ex = new Game();
             ex.setVisible(true);
         });
   }
