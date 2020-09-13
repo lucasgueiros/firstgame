@@ -3,10 +3,15 @@ package com.lucasgueiros.ludovicus.items;
 import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
+
 import java.io.IOException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import com.lucasgueiros.ludovicus.generics.Position;
 
 public class Sword extends Item {
 
@@ -59,6 +64,11 @@ public class Sword extends Item {
 
   public void undoAction() {
     this.setStatus(SwordStatus.HANDLE);
+  }
+
+  public void setPositionByHandPosition(Position handPosition) {
+    this.setPositionX(handPosition.x + ( this.isDoingAction() ? 1 : -1) );
+    this.setPositionY(handPosition.y + ( this.isDoingAction() ? -2 : -12) );
   }
 
 }

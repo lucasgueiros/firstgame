@@ -15,37 +15,28 @@ import java.io.IOException;
 import com.lucasgueiros.ludovicus.items.Item;
 import com.lucasgueiros.ludovicus.generics.Sprite;
 
-public abstract class Character extends Sprite {
-  private Drawable father;
+import com.lucasgueiros.ludovicus.generics.Position;
 
-  public Drawable getFather() {
-    return father;
-  }
-  public void setFather(Drawable father ){
-    this.father = father;
-  }
+public abstract class Character extends Sprite {
+
+  protected abstract BufferedImage getImage();
+
+  protected abstract Position getHandPosition();
+
   public void update() {
     super.update();
   }
   public void draw(Graphics2D g) {
     g = (Graphics2D) g.create();
 
-    try {
-      BufferedImage image = ImageIO.read(Character.class.getResourceAsStream("/com/lucasgueiros/ludovicus/characters/ludovicus.png"));
-      g.drawImage(image, super.getPositionX(), super.getPositionY(), null);
-    } catch (IOException e) {
-      g.setColor(new Color(0,255,0));
+    BufferedImage image = this.getImage();
+    g.drawImage(image, super.getPositionX(), super.getPositionY(), null);
+
+    if(this.itemDireito != null) {
+      this.itemDireito.setPositionByHandPosition(this.getHandPosition());
+      this.itemDireito.draw(g);
     }
 
-    if(this.itemDireito.isDoingAction()) {
-      this.itemDireito.setPositionX(super.getPositionX() + 22);
-      this.itemDireito.setPositionY(super.getPositionY() + 14);
-    } else {
-      this.itemDireito.setPositionX(super.getPositionX() + 20);
-      this.itemDireito.setPositionY(super.getPositionY() + 4);
-    }
-
-    this.itemDireito.draw(g);
     Toolkit.getDefaultToolkit().sync();
   }
 
