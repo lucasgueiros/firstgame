@@ -51,7 +51,7 @@ public class Board extends JPanel implements Runnable {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     try {
-      BufferedImage image = ImageIO.read(Board.class.getResourceAsStream("/com/lucasgueiros/ludovicus/ground/grass.png"));
+      BufferedImage image = ImageIO.read(Board.class.getResourceAsStream("/com/lucasgueiros/ludovicus/ground/water.png"));
       TexturePaint texture = new TexturePaint(image, new Rectangle(25,25));
       g2d.setPaint(texture);
       g2d.setStroke(new BasicStroke(4.0F));
