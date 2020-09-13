@@ -18,11 +18,13 @@ import java.awt.BasicStroke;
 import java.awt.Rectangle;
 import java.io.IOException;
 
+import com.lucasgueiros.ludovicus.world.World;
+
 public class Board extends JPanel implements Runnable {
 
   final static Logger logger = LogManager.getLogger(Board.class);
   public List<Drawable> drawables;
-
+  private World world = new World("/com/lucasgueiros/ludovicus/world/mainWorld.txt");
   public Board() {
     initBoard();
     drawables = new ArrayList<>();
@@ -50,7 +52,7 @@ public class Board extends JPanel implements Runnable {
   public void paintComponent (Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-    try {
+    /*try {
       BufferedImage image = ImageIO.read(Board.class.getResourceAsStream("/com/lucasgueiros/ludovicus/ground/water.png"));
       TexturePaint texture = new TexturePaint(image, new Rectangle(25,25));
       g2d.setPaint(texture);
@@ -58,7 +60,8 @@ public class Board extends JPanel implements Runnable {
     } catch (IOException e) {
       g2d.setColor(new Color(0,255,0));
     }
-    g2d.fillRect(0,0,900,500);
+    g2d.fillRect(0,0,900,500);*/
+    world.draw(g2d,0,0);
     for(Drawable drawable : drawables) {
       drawable.draw(g2d);
     }

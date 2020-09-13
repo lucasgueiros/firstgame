@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 public abstract class Drawable {
   private final static Logger logger = LogManager.getLogger(Drawable.class);
-  protected static BufferedImage getResource(String url) {
+  public static BufferedImage getResource(String url) {
     try {
       return ImageIO.read(Drawable.class.getResourceAsStream(url));
     } catch (IOException e) {
