@@ -1,8 +1,24 @@
 package com.lucasgueiros.ludovicus.generics;
 
 import java.awt.Graphics2D;
+import java.awt.image.BufferedImage;
+import javax.imageio.ImageIO;
+import java.io.IOException;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 
 public abstract class Drawable {
+  private final static Logger logger = LogManager.getLogger(Drawable.class);
+  protected static BufferedImage getResource(String url) {
+    try {
+      return ImageIO.read(Drawable.class.getResourceAsStream(url));
+    } catch (IOException e) {
+      logger.error(e.toString());
+    }
+    return null;
+  }
 
   protected int positionX;
   protected int positionY;

@@ -11,18 +11,15 @@ import com.lucasgueiros.ludovicus.items.Item;
 import com.lucasgueiros.ludovicus.generics.Position;
 
 public class Ludovicus extends Character {
+
   final static Logger logger = LogManager.getLogger(Ludovicus.class);
+  private final static BufferedImage LUDOVICUS = getResource("/com/lucasgueiros/ludovicus/characters/ludovicus.png");
 
   public Ludovicus(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
 		super(positionX, positionY, sizeX, sizeY, moveX, moveY);
   }
   protected BufferedImage getImage() {
-    try {
-      return ImageIO.read(Ludovicus.class.getResourceAsStream("/com/lucasgueiros/ludovicus/characters/ludovicus.png"));
-    } catch (IOException e) {
-      logger.atError().log(e);
-    }
-    return null;
+    return LUDOVICUS;
   }
 
   protected Position getHandPosition(){
