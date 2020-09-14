@@ -19,6 +19,7 @@ public class Game extends JFrame
 
     Board board = new Board();
     board.addDrawble(ludovicus);
+    board.setLudovicus(ludovicus);
     addKeyListener(new CharacterUserController(ludovicus));
     add(board);
     pack();

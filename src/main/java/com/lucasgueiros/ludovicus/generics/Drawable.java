@@ -97,4 +97,8 @@ public abstract class Drawable {
 	public void setSizeY(int sizeY) {
 		this.sizeY = sizeY;
 	}
+
+  public Position getCenter() {
+    return new Position(positionX + (sizeX / 2), positionY + (sizeY / 2));
+  }
 }

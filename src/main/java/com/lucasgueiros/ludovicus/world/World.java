@@ -16,6 +16,8 @@ import java.awt.Graphics2D;
 
 import java.util.Scanner;
 
+import com.lucasgueiros.ludovicus.generics.Position;
+
 public class World {
 
   private static final Logger LOGGER = LogManager.getLogger(World.class);
@@ -40,7 +42,6 @@ public class World {
 
     for(int i = 0 ; i < x; i++) {
       String string = scanner.nextLine();
-      LOGGER.atDebug().log(string);
       for(int j = 0; j <y; j++) {
         switch(string.charAt(j)) {
           case 'G':
@@ -63,7 +64,7 @@ public class World {
     }*/
   }
 
-  public void draw(Graphics2D g2d, int x, int y){
+  public void draw(Graphics2D g2d, Position position){
     int cellx = 0, celly = 0;
     for(int i = 0; i < world.length; i++) {
       for(int j = 0; j < world.length; j++) {

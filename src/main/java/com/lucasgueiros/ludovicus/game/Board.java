@@ -25,6 +25,8 @@ public class Board extends JPanel implements Runnable {
   final static Logger logger = LogManager.getLogger(Board.class);
   public List<Drawable> drawables;
   private World world = new World("/com/lucasgueiros/ludovicus/world/mainWorld.txt");
+  private Drawable ludovicus;
+
   public Board() {
     initBoard();
     drawables = new ArrayList<>();
@@ -61,7 +63,7 @@ public class Board extends JPanel implements Runnable {
       g2d.setColor(new Color(0,255,0));
     }
     g2d.fillRect(0,0,900,500);*/
-    world.draw(g2d,0,0);
+    world.draw(g2d,this.ludovicus.getCenter());
     for(Drawable drawable : drawables) {
       drawable.draw(g2d);
     }
@@ -113,5 +115,7 @@ public class Board extends JPanel implements Runnable {
           beforeTime = System.currentTimeMillis();
       }
   }
-
+  public void setLudovicus(Drawable ludovicus) {
+    this.ludovicus = ludovicus;
+  }
 }
