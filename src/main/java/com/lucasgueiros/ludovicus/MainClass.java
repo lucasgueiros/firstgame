@@ -1,4 +1,4 @@
-package lucas.gueiros.firstgame;
+package com.lucasgueiros.ludovicus;
 
 import java.awt.EventQueue;
 import com.lucasgueiros.ludovicus.game.Game;
