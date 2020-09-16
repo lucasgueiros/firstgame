@@ -15,11 +15,11 @@ public abstract class Drawable {
   protected Pair position;
   protected Pair size;
 
-  public abstract void draw(Graphics2D g);
+  public abstract void draw(Graphics2D g, Pair relativeTo);
   public abstract void update();
 
-  public Position getCenter() {
-    return new Position(position.x + (size.x / 2), position.y + (size.y / 2));
+  public Pair getCenter() {
+    return new Pair(position.x + (size.x / 2), position.y + (size.y / 2));
   }
 
   // GENERATED CODE

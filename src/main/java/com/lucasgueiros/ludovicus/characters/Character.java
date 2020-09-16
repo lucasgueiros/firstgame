@@ -26,15 +26,16 @@ public abstract class Character extends Sprite {
   public void update() {
     super.update();
   }
-  public void draw(Graphics2D g) {
+  public void draw(Graphics2D g, Pair relativeTo) {
     g = (Graphics2D) g.create();
 
     BufferedImage image = this.getImage();
-    g.drawImage(image, super.position.x, super.position.y, null);
+    Pair relativePosition = super.position.relative(relativeTo);
+    g.drawImage(image, relativePosition.x, relativePosition.y, null);
 
     if(this.itemDireito != null) {
       this.itemDireito.setPositionByHandPosition(this.getHandPosition());
-      this.itemDireito.draw(g);
+      this.itemDireito.draw(g, relativeTo);
     }
 
     Toolkit.getDefaultToolkit().sync();

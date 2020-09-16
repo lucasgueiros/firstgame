@@ -40,7 +40,7 @@ public class Sword extends Item {
     return this.status == SwordStatus.ATTACK;
   }
 
-  public void draw(Graphics2D g) {
+  public void draw(Graphics2D g, Pair relativeTo) {
     BufferedImage image;
     switch(status) {
       case HANDLE:
@@ -52,7 +52,8 @@ public class Sword extends Item {
       default:
         image = SWORD_ATTACK;
     }
-    g.drawImage(image, positionX, positionY, null);
+    Pair relativePosition = super.position.relative(relativeTo);
+    g.drawImage(image, relativePosition.x, relativePosition.y, null);
   }
   public void update() {
 
@@ -66,7 +67,7 @@ public class Sword extends Item {
     this.setStatus(SwordStatus.HANDLE);
   }
 
-  public void setPositionByHandPosition(Position hand) {
+  public void setPositionByHandPosition(Pair hand) {
     this.position = hand.sum(this.isDoingAction() ? new Pair(1,-2) : new Pair(-1,-12));
   }
 

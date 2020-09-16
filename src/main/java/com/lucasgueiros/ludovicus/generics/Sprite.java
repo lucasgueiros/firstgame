@@ -22,8 +22,8 @@ public abstract class Sprite extends Drawable {
 	/**
 	* Default Sprite constructor
 	*/
-	public Sprite(Pair move) {
-		super();
+	public Sprite(Pair position, Pair size, Pair move) {
+		super(position,size);
 		this.move = move;
 	}
 

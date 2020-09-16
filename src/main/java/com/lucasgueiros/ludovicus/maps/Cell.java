@@ -1,10 +1,13 @@
 package com.lucasgueiros.ludovicus.maps;
 
 import com.lucasgueiros.ludovicus.generics.Drawable;
+import com.lucasgueiros.ludovicus.generics.Pair;
+
 import java.awt.TexturePaint;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.BasicStroke;
+
 
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
@@ -23,7 +26,7 @@ public enum Cell {
     this.podePassar = podePassar;
   }
 
-  public void draw(Graphics2D g2d,Pair position){
+  public void draw(Graphics2D g2d, Pair position){
     g2d.setStroke(new BasicStroke(4.0F));
     g2d.setPaint(texture);
     g2d.fillRect(position.x,position.y,SIZE,SIZE);

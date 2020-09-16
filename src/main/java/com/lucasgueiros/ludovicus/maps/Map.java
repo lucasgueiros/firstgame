@@ -26,7 +26,7 @@ public class Map {
 
   private Cell [][] map;
 
-  public map(String fileUrl) {
+  public Map(String fileUrl) {
     /*try {*/
     //BufferedReader reader = new BufferedReader(new InputStreamReader());
     Scanner scanner = new Scanner(Map.class.getResourceAsStream(fileUrl));
@@ -68,7 +68,7 @@ public class Map {
     int cellx = 0, celly = 0;
     for(int i = 0; i < map.length; i++) {
       for(int j = 0; j < map[0].length; j++) {
-        map[i][j].draw(g2d,cellx,celly);
+        map[i][j].draw(g2d,new Pair(cellx,celly));
         cellx += 25;
       }
       celly += 25;

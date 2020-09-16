@@ -23,4 +23,8 @@ public class Pair {
   public Pair setY(int y) {
     return new Pair(this.x, y);
   }
+
+  public Pair relative(Pair to) {
+    return new Pair(this.x - to.x, this.y - to.y);
+  }
 }

@@ -19,6 +19,7 @@ import java.awt.Rectangle;
 import java.io.IOException;
 
 import com.lucasgueiros.ludovicus.maps.Map;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 public class Board extends JPanel implements Runnable {
 
@@ -55,8 +56,9 @@ public class Board extends JPanel implements Runnable {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
     world.draw(g2d,this.ludovicus.getCenter());
+    Pair zero = new Pair(0,0);
     for(Drawable drawable : drawables) {
-      drawable.draw(g2d);
+      drawable.draw(g2d,zero);
     }
   }
 
