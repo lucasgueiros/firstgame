@@ -6,7 +6,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.BasicStroke;
 
-import static com.lucasgueiros.ludovicus.generics.Drawable.getResource;
+import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
 public enum Cell {
   GRASS("/com/lucasgueiros/ludovicus/ground/grass.png",'G',true),

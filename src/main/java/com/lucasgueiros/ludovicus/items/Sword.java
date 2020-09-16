@@ -13,12 +13,14 @@ import org.apache.logging.log4j.Logger;
 
 import com.lucasgueiros.ludovicus.generics.Position;
 
+import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
+
 public class Sword extends Item {
 
   public static enum SwordStatus {HANDLE,ATTACK};
 
   private final static Logger logger = LogManager.getLogger(Sword.class);
-  private static final BufferedImage SWORD = getResource("/com/lucasgueiros/ludovicus/items/sword.png");
+  private static final BufferedImage SWORD = getResource("/com/lucasgueiros/ludovicus/items/sword-handle.png");
   private static final BufferedImage SWORD_ATTACK =  getResource("/com/lucasgueiros/ludovicus/items/sword-attack.png");
 
   public SwordStatus status = SwordStatus.HANDLE;
