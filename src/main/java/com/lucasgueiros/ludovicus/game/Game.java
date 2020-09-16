@@ -15,7 +15,7 @@ public class Game extends JFrame
   }
 
   private void initUi() {
-    Map world = new Map("/com/lucasgueiros/ludovicus/maps/world.map");
+    Map world = new Map("/com/lucasgueiros/ludovicus/maps/world.xml");
     Ludovicus ludovicus = new Ludovicus(new Pair(300,300), new Pair(10,20), new Pair(0,0));
     Sword sword = new Sword(new Pair(0,0),new Pair(7,16));
     ludovicus.setItemDireito(sword);

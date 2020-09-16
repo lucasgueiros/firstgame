@@ -2,19 +2,23 @@ package com.lucasgueiros.ludovicus.maps;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.InputStreamReader;
 import java.io.FileInputStream;
 import java.io.IOException;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
 import java.awt.Graphics2D;
 
-import java.util.Scanner;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.DocumentBuilder;
+import org.w3c.dom.Document;
+import org.w3c.dom.NodeList;
+import org.w3c.dom.Node;
+import org.w3c.dom.Element;
+import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 import com.lucasgueiros.ludovicus.generics.Pair;
 
@@ -29,44 +33,52 @@ public class Map {
   private Pair inicZero;
 
   public Map(String fileUrl) {
-    /*try {*/
+    try {
     //BufferedReader reader = new BufferedReader(new InputStreamReader());
-    Scanner scanner = new Scanner(Map.class.getResourceAsStream(fileUrl));
-    //String firstLine = reader.readLine();
-    //LOGGER.atDebug().log(firstLine);
-    //Matcher m = p.matcher(firstLine);
-    //int x = Integer.parseInt(m.group(0));
-    //int y = Integer.parseInt(m.group(1));
-    int x = scanner.nextInt();
-    int y = scanner.nextInt();
-    int inicZeroX = scanner.nextInt();
-    int inicZeroY = scanner.nextInt();
-    this.inicZero = new Pair(inicZeroX,inicZeroY);
-    scanner.nextLine();
-    map = new Cell [x][y];
+      DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+      DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+      Document doc = dBuilder.parse(Map.class.getResourceAsStream(fileUrl));
 
-    for(int i = 0 ; i < x; i++) {
-      String string = scanner.nextLine();
-      for(int j = 0; j <y; j++) {
-        switch(string.charAt(j)) {
-          case 'G':
-            map[i][j] = Cell.GRASS;
-          break;
+      Element size = (Element) doc.getElementsByTagName("size").item(0);
+      int x = Integer.parseInt(size.getElementsByTagName("x").item(0).getTextContent());
+      int y = Integer.parseInt(size.getElementsByTagName("y").item(0).getTextContent());
+      map = new Cell [x][y];
 
-          case 'W':
-            map[i][j] = Cell.WATER;
-          break;
+      Element zero = (Element) doc.getElementsByTagName("zero").item(0);
+      int inicZeroX = Integer.parseInt(zero.getElementsByTagName("x").item(0).getTextContent());
+      int inicZeroY = Integer.parseInt(zero.getElementsByTagName("y").item(0).getTextContent());
+      this.inicZero = new Pair(inicZeroX,inicZeroY);
 
-          default:
-            map[i][j] = Cell.GRASS;
+      Element ground = (Element) doc.getElementsByTagName("ground").item(0);
+      NodeList lines = ground.getElementsByTagName("line");
+      for(int i = 0 ; i < x; i++) {
+        String string = lines.item(i).getTextContent();
+        for(int j = 0; j <y; j++) {
+          switch(string.charAt(j)) {
+            case 'G':
+              map[i][j] = Cell.GRASS;
+            break;
+
+            case 'W':
+              map[i][j] = Cell.WATER;
+            break;
+
+            default:
+              map[i][j] = Cell.GRASS;
+          }
         }
       }
-    }
-    /*} catch (FileNotFoundException e) {
+
+      Node objects = doc.getElementsByTagName("objects").item(0);
+    } catch (ParserConfigurationException e) {
+      LOGGER.atError().log(e);
+    } catch (SAXException  e) {
+      LOGGER.atError().log(e);
+    } catch (FileNotFoundException e) {
       LOGGER.atError().log(e);
     } catch (IOException e) {
       LOGGER.atError().log(e);
-    }*/
+    }
   }
 
   public Pair getInicZero() {
