@@ -18,13 +18,13 @@ import java.awt.BasicStroke;
 import java.awt.Rectangle;
 import java.io.IOException;
 
-import com.lucasgueiros.ludovicus.world.World;
+import com.lucasgueiros.ludovicus.maps.Map;
 
 public class Board extends JPanel implements Runnable {
 
   final static Logger logger = LogManager.getLogger(Board.class);
   public List<Drawable> drawables;
-  private World world = new World("/com/lucasgueiros/ludovicus/world/mainWorld.txt");
+  private Map world = new Map("/com/lucasgueiros/ludovicus/maps/world.map");
   private Drawable ludovicus;
 
   public Board() {

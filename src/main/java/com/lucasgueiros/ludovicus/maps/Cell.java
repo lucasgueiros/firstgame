@@ -1,4 +1,4 @@
-package com.lucasgueiros.ludovicus.world;
+package com.lucasgueiros.ludovicus.maps;
 
 import com.lucasgueiros.ludovicus.generics.Drawable;
 import java.awt.TexturePaint;

@@ -1,4 +1,4 @@
-package com.lucasgueiros.ludovicus.world;
+package com.lucasgueiros.ludovicus.maps;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -18,18 +18,18 @@ import java.util.Scanner;
 
 import com.lucasgueiros.ludovicus.generics.Pair;
 
-public class World {
+public class Map {
 
-  private static final Logger LOGGER = LogManager.getLogger(World.class);
+  private static final Logger LOGGER = LogManager.getLogger(Map.class);
 
   private static Pattern p = Pattern.compile("([\\d]+) ([\\d]+)");
 
-  private Cell [][] world;
+  private Cell [][] map;
 
-  public World(String fileUrl) {
+  public map(String fileUrl) {
     /*try {*/
     //BufferedReader reader = new BufferedReader(new InputStreamReader());
-    Scanner scanner = new Scanner(World.class.getResourceAsStream(fileUrl));
+    Scanner scanner = new Scanner(Map.class.getResourceAsStream(fileUrl));
     //String firstLine = reader.readLine();
     //LOGGER.atDebug().log(firstLine);
     //Matcher m = p.matcher(firstLine);
@@ -38,22 +38,22 @@ public class World {
     int x = scanner.nextInt();
     int y = scanner.nextInt();
     scanner.nextLine();
-    world = new Cell [x][y];
+    map = new Cell [x][y];
 
     for(int i = 0 ; i < x; i++) {
       String string = scanner.nextLine();
       for(int j = 0; j <y; j++) {
         switch(string.charAt(j)) {
           case 'G':
-            world[i][j] = Cell.GRASS;
+            map[i][j] = Cell.GRASS;
           break;
 
           case 'W':
-            world[i][j] = Cell.WATER;
+            map[i][j] = Cell.WATER;
           break;
 
           default:
-            world[i][j] = Cell.GRASS;
+            map[i][j] = Cell.GRASS;
         }
       }
     }
@@ -66,9 +66,9 @@ public class World {
 
   public void draw(Graphics2D g2d, Pair position){
     int cellx = 0, celly = 0;
-    for(int i = 0; i < world.length; i++) {
-      for(int j = 0; j < world.length; j++) {
-        world[i][j].draw(g2d,cellx,celly);
+    for(int i = 0; i < map.length; i++) {
+      for(int j = 0; j < map[0].length; j++) {
+        map[i][j].draw(g2d,cellx,celly);
         cellx += 25;
       }
       celly += 25;
