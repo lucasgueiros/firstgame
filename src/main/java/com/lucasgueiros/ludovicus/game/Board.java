@@ -25,12 +25,22 @@ public class Board extends JPanel implements Runnable {
 
   final static Logger logger = LogManager.getLogger(Board.class);
   public List<Drawable> drawables;
-  private Map world = new Map("/com/lucasgueiros/ludovicus/maps/world.map");
+  private Map world;
   private Drawable ludovicus;
+
+  private Pair size = new Pair(900,500);
+  private Pair zero = null;
+  private Pair inic = new Pair(50,50);
+  private Pair fini = new Pair(850,450);
 
   public Board() {
     initBoard();
     drawables = new ArrayList<>();
+  }
+
+  public void setWorld(Map world) {
+    this.world = world;
+    this.zero = this.world.getInicZero();
   }
 
   private void addKeyListener (KeyAdapter keyAdapter) {
@@ -38,7 +48,7 @@ public class Board extends JPanel implements Runnable {
   }
 
   private void initBoard() {
-    setPreferredSize(new Dimension(900,500));
+    setPreferredSize(new Dimension(size.x,size.y));
   }
 
   public void addDrawble(Drawable drawable) {
@@ -51,12 +61,19 @@ public class Board extends JPanel implements Runnable {
     }
   }
 
+  private Pair calcZero() {
+    Pair lp = ludovicus.getPosition().relative(zero);
+    Pair result = lp.outOfBounds(inic,fini);
+    Pair sum = zero.sum(result);
+    return sum;
+  }
+
   @Override
   public void paintComponent (Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-    world.draw(g2d,this.ludovicus.getCenter());
-    Pair zero = new Pair(0,0);
+    zero = calcZero();
+    world.draw(g2d,zero);
     for(Drawable drawable : drawables) {
       drawable.draw(g2d,zero);
     }

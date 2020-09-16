@@ -26,6 +26,8 @@ public class Map {
 
   private Cell [][] map;
 
+  private Pair inicZero;
+
   public Map(String fileUrl) {
     /*try {*/
     //BufferedReader reader = new BufferedReader(new InputStreamReader());
@@ -37,6 +39,9 @@ public class Map {
     //int y = Integer.parseInt(m.group(1));
     int x = scanner.nextInt();
     int y = scanner.nextInt();
+    int inicZeroX = scanner.nextInt();
+    int inicZeroY = scanner.nextInt();
+    this.inicZero = new Pair(inicZeroX,inicZeroY);
     scanner.nextLine();
     map = new Cell [x][y];
 
@@ -64,11 +69,15 @@ public class Map {
     }*/
   }
 
-  public void draw(Graphics2D g2d, Pair position){
+  public Pair getInicZero() {
+    return inicZero;
+  }
+
+  public void draw(Graphics2D g2d, Pair relativeTo){
     int cellx = 0, celly = 0;
     for(int i = 0; i < map.length; i++) {
       for(int j = 0; j < map[0].length; j++) {
-        map[i][j].draw(g2d,new Pair(cellx,celly));
+        map[i][j].draw(g2d,new Pair(cellx,celly).relative(relativeTo));
         cellx += 25;
       }
       celly += 25;

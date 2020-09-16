@@ -27,4 +27,20 @@ public class Pair {
   public Pair relative(Pair to) {
     return new Pair(this.x - to.x, this.y - to.y);
   }
+
+  public Pair outOfBounds(Pair inic, Pair fini) {
+    int x = 0;
+    int y = 0;
+    if (this.x < inic.x) {
+      x =  this.x - inic.x;
+    } else if (this.x > fini.x) {
+      x = this.x - fini.x;
+    }
+    if (this.y < inic.y){
+      y = this.y - inic.y;
+    } else if (this.y > fini.y) {
+      y = this.y - fini.y;
+    }
+    return new Pair(x,y);
+  }
 }

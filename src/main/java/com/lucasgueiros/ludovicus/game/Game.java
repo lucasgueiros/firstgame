@@ -6,6 +6,7 @@ import com.lucasgueiros.ludovicus.items.Sword;
 import com.lucasgueiros.ludovicus.characters.Ludovicus;
 import com.lucasgueiros.ludovicus.controls.CharacterUserController;
 import com.lucasgueiros.ludovicus.generics.Pair;
+import com.lucasgueiros.ludovicus.maps.Map;
 
 public class Game extends JFrame
 {
@@ -14,11 +15,13 @@ public class Game extends JFrame
   }
 
   private void initUi() {
-    Ludovicus ludovicus = new Ludovicus(new Pair(100,100), new Pair(10,20), new Pair(0,0));
+    Map world = new Map("/com/lucasgueiros/ludovicus/maps/world.map");
+    Ludovicus ludovicus = new Ludovicus(new Pair(300,300), new Pair(10,20), new Pair(0,0));
     Sword sword = new Sword(new Pair(0,0),new Pair(7,16));
     ludovicus.setItemDireito(sword);
 
     Board board = new Board();
+    board.setWorld(world);
     board.addDrawble(ludovicus);
     board.setLudovicus(ludovicus);
     addKeyListener(new CharacterUserController(ludovicus));
