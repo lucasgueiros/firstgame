@@ -8,7 +8,7 @@ import javax.imageio.ImageIO;
 import java.io.IOException;
 
 import com.lucasgueiros.ludovicus.items.Item;
-import com.lucasgueiros.ludovicus.generics.Position;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
@@ -17,15 +17,15 @@ public class Ludovicus extends Character {
   final static Logger logger = LogManager.getLogger(Ludovicus.class);
   private final static BufferedImage LUDOVICUS = getResource("/com/lucasgueiros/ludovicus/characters/ludovicus-front.png");
 
-  public Ludovicus(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
-		super(positionX, positionY, sizeX, sizeY, moveX, moveY);
+  public Ludovicus(Pair position, Pair size, Pair move) {
+		super(position, size, move);
   }
   protected BufferedImage getImage() {
     return LUDOVICUS;
   }
 
-  protected Position getHandPosition(){
-    return new Position(super.getPositionX() + 21, super.getPositionY() + 16);
+  protected Pair getHandPosition(){
+    return super.position.sum(new Pair(21,16));
   }
 
 }

@@ -16,7 +16,7 @@ import java.awt.Graphics2D;
 
 import java.util.Scanner;
 
-import com.lucasgueiros.ludovicus.generics.Position;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 public class World {
 
@@ -64,7 +64,7 @@ public class World {
     }*/
   }
 
-  public void draw(Graphics2D g2d, Position position){
+  public void draw(Graphics2D g2d, Pair position){
     int cellx = 0, celly = 0;
     for(int i = 0; i < world.length; i++) {
       for(int j = 0; j < world.length; j++) {

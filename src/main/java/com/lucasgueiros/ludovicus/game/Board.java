@@ -54,15 +54,6 @@ public class Board extends JPanel implements Runnable {
   public void paintComponent (Graphics g) {
     super.paintComponent(g);
     Graphics2D g2d = (Graphics2D) g;
-    /*try {
-      BufferedImage image = ImageIO.read(Board.class.getResourceAsStream("/com/lucasgueiros/ludovicus/ground/water.png"));
-      TexturePaint texture = new TexturePaint(image, new Rectangle(25,25));
-      g2d.setPaint(texture);
-      g2d.setStroke(new BasicStroke(4.0F));
-    } catch (IOException e) {
-      g2d.setColor(new Color(0,255,0));
-    }
-    g2d.fillRect(0,0,900,500);*/
     world.draw(g2d,this.ludovicus.getCenter());
     for(Drawable drawable : drawables) {
       drawable.draw(g2d);

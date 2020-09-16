@@ -4,85 +4,42 @@ import com.lucasgueiros.ludovicus.items.Item;
 
 public abstract class Sprite extends Drawable {
 
-  private int moveX;
-  private int moveY;
+  private Pair move;
 
   public void update () {
-    super.positionX += moveX;
-    super.positionY += moveY;
+    super.position = super.position.sum(move);
   }
 
+	// generated code
+
 	/**
-	* Default Boneman constructor
+	* Default empty Sprite constructor
 	*/
-	public Sprite(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
-		super(positionX, positionY, sizeX, sizeY);
-		this.moveX = moveX;
-		this.moveY = moveY;
+	public Sprite() {
+		super();
 	}
 
 	/**
-	* Returns value of positionX
+	* Default Sprite constructor
+	*/
+	public Sprite(Pair move) {
+		super();
+		this.move = move;
+	}
+
+	/**
+	* Returns value of move
 	* @return
 	*/
-	public int getPositionX() {
-		return positionX;
+	public Pair getMove() {
+		return move;
 	}
 
 	/**
-	* Sets new value of positionX
+	* Sets new value of move
 	* @param
 	*/
-	public void setPositionX(int positionX) {
-		this.positionX = positionX;
+	public void setMove(Pair move) {
+		this.move = move;
 	}
-
-	/**
-	* Returns value of positionY
-	* @return
-	*/
-	public int getPositionY() {
-		return positionY;
-	}
-
-	/**
-	* Sets new value of positionY
-	* @param
-	*/
-	public void setPositionY(int positionY) {
-		this.positionY = positionY;
-	}
-
-	/**
-	* Returns value of moveX
-	* @return
-	*/
-	public int getMoveX() {
-		return moveX;
-	}
-
-	/**
-	* Sets new value of moveX
-	* @param
-	*/
-	public void setMoveX(int moveX) {
-		this.moveX = moveX;
-	}
-
-	/**
-	* Returns value of moveY
-	* @return
-	*/
-	public int getMoveY() {
-		return moveY;
-	}
-
-	/**
-	* Sets new value of moveY
-	* @param
-	*/
-	public void setMoveY(int moveY) {
-		this.moveY = moveY;
-	}
-
 }

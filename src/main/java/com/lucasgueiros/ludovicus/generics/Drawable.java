@@ -12,85 +12,64 @@ import org.apache.logging.log4j.Logger;
 public abstract class Drawable {
   private final static Logger logger = LogManager.getLogger(Drawable.class);
 
-  protected int positionX;
-  protected int positionY;
-  protected int sizeX;
-  protected int sizeY;
+  protected Pair position;
+  protected Pair size;
 
   public abstract void draw(Graphics2D g);
   public abstract void update();
 
-  public Drawable (int positionX, int positionY, int sizeX, int sizeY) {
-    this.positionX = positionX;
-    this.positionY = positionY;
-    this.sizeX = sizeX;
-    this.sizeY = sizeY;
-  }
-
-  /**
-	* Returns value of positionX
-	* @return
-	*/
-	public int getPositionX() {
-		return positionX;
-	}
-
-	/**
-	* Sets new value of positionX
-	* @param
-	*/
-	public void setPositionX(int positionX) {
-		this.positionX = positionX;
-	}
-
-	/**
-	* Returns value of positionY
-	* @return
-	*/
-	public int getPositionY() {
-		return positionY;
-	}
-
-	/**
-	* Sets new value of positionY
-	* @param
-	*/
-	public void setPositionY(int positionY) {
-		this.positionY = positionY;
-	}
-  /**
-	* Returns value of sizeX
-	* @return
-	*/
-	public int getSizeX() {
-		return sizeX;
-	}
-
-	/**
-	* Sets new value of sizeX
-	* @param
-	*/
-	public void setSizeX(int sizeX) {
-		this.sizeX = sizeX;
-	}
-
-	/**
-	* Returns value of sizeY
-	* @return
-	*/
-	public int getSizeY() {
-		return sizeY;
-	}
-
-	/**
-	* Sets new value of sizeY
-	* @param
-	*/
-	public void setSizeY(int sizeY) {
-		this.sizeY = sizeY;
-	}
-
   public Position getCenter() {
-    return new Position(positionX + (sizeX / 2), positionY + (sizeY / 2));
+    return new Position(position.x + (size.x / 2), position.y + (size.y / 2));
   }
+
+  // GENERATED CODE
+
+	/**
+	* Default empty Drawable constructor
+	*/
+	public Drawable() {
+		super();
+	}
+
+	/**
+	* Default Drawable constructor
+	*/
+	public Drawable(Pair position, Pair size) {
+		super();
+		this.position = position;
+		this.size = size;
+	}
+
+	/**
+	* Returns value of position
+	* @return
+	*/
+	public Pair getPosition() {
+		return position;
+	}
+
+	/**
+	* Sets new value of position
+	* @param
+	*/
+	public void setPosition(Pair position) {
+		this.position = position;
+	}
+
+	/**
+	* Returns value of size
+	* @return
+	*/
+	public Pair getSize() {
+		return size;
+	}
+
+	/**
+	* Sets new value of size
+	* @param
+	*/
+	public void setSize(Pair size) {
+		this.size = size;
+	}
+
 }

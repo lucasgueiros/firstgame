@@ -11,7 +11,7 @@ import java.io.IOException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import com.lucasgueiros.ludovicus.generics.Position;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
@@ -25,8 +25,8 @@ public class Sword extends Item {
 
   public SwordStatus status = SwordStatus.HANDLE;
 
-  public Sword(int positionX, int positionY, int sizeX, int sizeY) {
-    super(positionX, positionY, sizeX, sizeY);
+  public Sword(Pair position, Pair size) {
+    super(position, size);
   }
 
   public SwordStatus getStatus() {
@@ -66,9 +66,8 @@ public class Sword extends Item {
     this.setStatus(SwordStatus.HANDLE);
   }
 
-  public void setPositionByHandPosition(Position handPosition) {
-    this.setPositionX(handPosition.x + ( this.isDoingAction() ? 1 : -1) );
-    this.setPositionY(handPosition.y + ( this.isDoingAction() ? -2 : -12) );
+  public void setPositionByHandPosition(Position hand) {
+    this.position = hand.sum(this.isDoingAction() ? new Pair(1,-2) : new Pair(-1,-12));
   }
 
 }

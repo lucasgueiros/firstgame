@@ -5,6 +5,7 @@ import com.lucasgueiros.ludovicus.game.Board;
 import com.lucasgueiros.ludovicus.items.Sword;
 import com.lucasgueiros.ludovicus.characters.Ludovicus;
 import com.lucasgueiros.ludovicus.controls.CharacterUserController;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 public class Game extends JFrame
 {
@@ -13,8 +14,8 @@ public class Game extends JFrame
   }
 
   private void initUi() {
-    Ludovicus ludovicus = new Ludovicus(100,100,10,20,0,0);
-    Sword sword = new Sword(0,0,7,16);
+    Ludovicus ludovicus = new Ludovicus(new Pair(100,100), new Pair(10,20), new Pair(0,0));
+    Sword sword = new Sword(new Pair(0,0),new Pair(7,16));
     ludovicus.setItemDireito(sword);
 
     Board board = new Board();

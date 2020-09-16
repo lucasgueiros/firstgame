@@ -20,19 +20,19 @@ public class CharacterUserController extends KeyAdapter {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            this.character.setMoveX(-2);
+            this.character.setMove(this.character.getMove().setX(-2));
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            this.character.setMoveX(2);
+            this.character.setMove(this.character.getMove().setX(2));
         }
 
         if (key == KeyEvent.VK_UP) {
-            this.character.setMoveY(-2);
+            this.character.setMove(this.character.getMove().setY(-2));
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            this.character.setMoveY(2);
+            this.character.setMove(this.character.getMove().setY(2));
         }
 
         if (key == KeyEvent.VK_SPACE ){
@@ -45,19 +45,19 @@ public class CharacterUserController extends KeyAdapter {
         int key = e.getKeyCode();
 
         if (key == KeyEvent.VK_LEFT) {
-            this.character.setMoveX(0);
+            this.character.setMove(this.character.getMove().setX(0));
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            this.character.setMoveX(0);
+            this.character.setMove(this.character.getMove().setX(0));
         }
 
         if (key == KeyEvent.VK_UP) {
-            this.character.setMoveY(0);
+            this.character.setMove(this.character.getMove().setY(0));
         }
 
         if (key == KeyEvent.VK_DOWN) {
-            this.character.setMoveY(0);
+            this.character.setMove(this.character.getMove().setY(0));
         }
 
         if (key == KeyEvent.VK_SPACE ){

@@ -15,13 +15,13 @@ import java.io.IOException;
 import com.lucasgueiros.ludovicus.items.Item;
 import com.lucasgueiros.ludovicus.generics.Sprite;
 
-import com.lucasgueiros.ludovicus.generics.Position;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 public abstract class Character extends Sprite {
 
   protected abstract BufferedImage getImage();
 
-  protected abstract Position getHandPosition();
+  protected abstract Pair getHandPosition();
 
   public void update() {
     super.update();
@@ -30,7 +30,7 @@ public abstract class Character extends Sprite {
     g = (Graphics2D) g.create();
 
     BufferedImage image = this.getImage();
-    g.drawImage(image, super.getPositionX(), super.getPositionY(), null);
+    g.drawImage(image, super.position.x, super.position.y, null);
 
     if(this.itemDireito != null) {
       this.itemDireito.setPositionByHandPosition(this.getHandPosition());
@@ -49,8 +49,8 @@ public abstract class Character extends Sprite {
 		return itemDireito;
 	}
 
-  public Character(int positionX, int positionY, int sizeX, int sizeY, int moveX, int moveY) {
-		super(positionX, positionY, sizeX, sizeY, moveX, moveY);
+  public Character(Pair position, Pair size, Pair move) {
+		super(position, size, move);
   }
 
 	/**
@@ -63,14 +63,6 @@ public abstract class Character extends Sprite {
 
   public boolean hasItemDireito() {
     return this.itemDireito != null;
-  }
-
-
-  public void setMoveX(int moveX){
-    super.setMoveX(moveX);
-  }
-  public void setMoveY(int moveY){
-    super.setMoveY(moveY);
   }
 
 }

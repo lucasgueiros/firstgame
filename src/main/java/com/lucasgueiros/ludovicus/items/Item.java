@@ -17,7 +17,7 @@ public abstract class Item extends Drawable {
     return this.father;
   }
 
-  public Item(int positionX, int positionY, int sizeX, int sizeY) {
-    super(positionX, positionY, sizeX, sizeY);
+  public Item(Pair position, Pair size) {
+    super(position, size);
   }
 }
