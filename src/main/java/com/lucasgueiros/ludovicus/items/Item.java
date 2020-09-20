@@ -1,19 +1,19 @@
 package com.lucasgueiros.ludovicus.items;
 
-import com.lucasgueiros.ludovicus.generics.Drawable;
+import com.lucasgueiros.ludovicus.generics.Positionable;
 import com.lucasgueiros.ludovicus.generics.Pair;
 
-public abstract class Item extends Drawable {
+public abstract class Item extends Positionable {
   public abstract void doAction();
   public abstract void undoAction();
   public abstract boolean isDoingAction();
   public abstract void setPositionByHandPosition(Pair handPosition);
 
-  public Drawable father;
-  public void setFather(Drawable drawable) {
+  public Positionable father;
+  public void setFather(Positionable positionable) {
     this.father = father;
   }
-  public Drawable getFather() {
+  public Positionable getFather() {
     return this.father;
   }
 

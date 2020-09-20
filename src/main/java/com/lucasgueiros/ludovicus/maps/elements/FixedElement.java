@@ -1,10 +1,10 @@
 package com.lucasgueiros.ludovicus.maps.elements;
 
-import com.lucasgueiros.ludovicus.generics.Drawable;
+import com.lucasgueiros.ludovicus.generics.Positionable;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 import com.lucasgueiros.ludovicus.generics.Pair;
-public abstract class FixedElement extends Drawable {
+public abstract class FixedElement extends Positionable {
 
   protected abstract BufferedImage getImage();
 
