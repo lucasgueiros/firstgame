@@ -1,6 +1,6 @@
 package com.lucasgueiros.ludovicus.maps;
 
-import com.lucasgueiros.ludovicus.generics.Positionable;
+import com.lucasgueiros.ludovicus.generics.PositionedDrawing;
 import com.lucasgueiros.ludovicus.generics.Pair;
 
 import java.awt.TexturePaint;

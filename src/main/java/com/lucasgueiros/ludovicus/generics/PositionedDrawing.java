@@ -9,8 +9,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public abstract class Positionable implements Comparable<Positionable> {
-  private final static Logger logger = LogManager.getLogger(Positionable.class);
+public abstract class PositionedDrawing implements Comparable<PositionedDrawing> {
+  private final static Logger logger = LogManager.getLogger(PositionedDrawing.class);
 
   protected Pair position;
   protected Pair size;
@@ -23,16 +23,16 @@ public abstract class Positionable implements Comparable<Positionable> {
   }
 
   @Override
-  public int compareTo(Positionable other) {
+  public int compareTo(PositionedDrawing other) {
     return this.position.y - other.position.y;
   }
 
   // GENERATED CODE
 
 	/**
-	* Default Positionable constructor
+	* Default PositionedDrawing constructor
 	*/
-	public Positionable(Pair position, Pair size) {
+	public PositionedDrawing(Pair position, Pair size) {
 		super();
 		this.position = position;
 		this.size = size;
