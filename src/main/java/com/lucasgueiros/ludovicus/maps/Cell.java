@@ -12,8 +12,8 @@ import java.awt.BasicStroke;
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
 public enum Cell {
-  GRASS("/com/lucasgueiros/ludovicus/ground/grass.png",'G',true),
-  WATER("/com/lucasgueiros/ludovicus/ground/water.png",'W',false);
+  GRASS("/com/lucasgueiros/ludovicus/maps/cells/grass.png",'G',true),
+  WATER("/com/lucasgueiros/ludovicus/maps/cells/water.png",'W',false);
 
   private final TexturePaint texture;
   private final char c;
