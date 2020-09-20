@@ -10,6 +10,8 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.awt.Graphics2D;
+import java.util.List;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.DocumentBuilder;
@@ -20,7 +22,9 @@ import org.w3c.dom.Element;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
+import com.lucasgueiros.ludovicus.maps.elements.Tree;
 import com.lucasgueiros.ludovicus.generics.Pair;
+import com.lucasgueiros.ludovicus.maps.elements.FixedElement;
 
 public class Map {
 
@@ -31,6 +35,8 @@ public class Map {
   private Cell [][] map;
 
   private Pair inicZero;
+
+  private List<FixedElement> objects = new ArrayList<>();
 
   public Map(String fileUrl) {
     try {
@@ -69,7 +75,15 @@ public class Map {
         }
       }
 
-      Node objects = doc.getElementsByTagName("objects").item(0);
+      Element objectList = (Element) doc.getElementsByTagName("objects").item(0);
+      NodeList nodesObjects = objectList.getElementsByTagName("tree");
+      for(int i=0;i<nodesObjects.getLength();i++){
+        Element treeNode = (Element) nodesObjects.item(i);
+        int treex = Integer.parseInt(treeNode.getElementsByTagName("x").item(0).getTextContent());
+        int treey = Integer.parseInt(treeNode.getElementsByTagName("y").item(0).getTextContent());
+        Tree tree = new Tree(new Pair(treex,treey));
+        objects.add(tree);
+      }
     } catch (ParserConfigurationException e) {
       LOGGER.atError().log(e);
     } catch (SAXException  e) {
@@ -96,6 +110,10 @@ public class Map {
       cellx = 0;
     }
 
+  }
+
+  public List<FixedElement> getObjects() {
+    return objects;
   }
 
 }

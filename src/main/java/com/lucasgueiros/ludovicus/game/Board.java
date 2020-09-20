@@ -41,6 +41,7 @@ public class Board extends JPanel implements Runnable {
   public void setWorld(Map world) {
     this.world = world;
     this.zero = this.world.getInicZero();
+    this.drawables.addAll(world.getObjects());
   }
 
   private void addKeyListener (KeyAdapter keyAdapter) {

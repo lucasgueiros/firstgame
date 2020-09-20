@@ -25,13 +25,6 @@ public abstract class Drawable {
   // GENERATED CODE
 
 	/**
-	* Default empty Drawable constructor
-	*/
-	public Drawable() {
-		super();
-	}
-
-	/**
 	* Default Drawable constructor
 	*/
 	public Drawable(Pair position, Pair size) {

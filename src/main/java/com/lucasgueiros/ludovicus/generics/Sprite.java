@@ -13,13 +13,6 @@ public abstract class Sprite extends Drawable {
 	// generated code
 
 	/**
-	* Default empty Sprite constructor
-	*/
-	public Sprite() {
-		super();
-	}
-
-	/**
 	* Default Sprite constructor
 	*/
 	public Sprite(Pair position, Pair size, Pair move) {
