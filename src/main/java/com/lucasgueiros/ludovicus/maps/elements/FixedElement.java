@@ -4,7 +4,6 @@ import com.lucasgueiros.ludovicus.generics.PositionedDrawing;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
 import com.lucasgueiros.ludovicus.generics.Pair;
-import com.lucasgueiros.ludovicus.generics.Triple;
 public abstract class FixedElement extends PositionedDrawing {
 
   protected abstract BufferedImage getImage();
@@ -13,12 +12,12 @@ public abstract class FixedElement extends PositionedDrawing {
     g = (Graphics2D) g.create();
 
     BufferedImage image = this.getImage();
-    Pair relativePosition = super.viewPosition.relative(relativeTo);
+    Pair relativePosition = super.position.relative(relativeTo);
     g.drawImage(image, relativePosition.x, relativePosition.y, null);
   }
 
-  public FixedElement (Triple position, Triple size){
-    super(position, size);
+  public FixedElement (Pair position, Pair size){
+    super(position,size);
   }
 
 }

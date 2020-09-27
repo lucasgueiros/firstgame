@@ -26,10 +26,10 @@ public enum Cell {
     this.podePassar = podePassar;
   }
 
-  public void draw(Graphics2D g2d, Pair viewPosition){
+  public void draw(Graphics2D g2d, Pair position){
     g2d.setStroke(new BasicStroke(4.0F));
     g2d.setPaint(texture);
-    g2d.fillRect(viewPosition.x,viewPosition.y,SIZE,SIZE);
+    g2d.fillRect(position.x,position.y,SIZE,SIZE);
   }
 
 	/**

@@ -24,7 +24,6 @@ import org.xml.sax.SAXException;
 
 import com.lucasgueiros.ludovicus.maps.elements.Tree;
 import com.lucasgueiros.ludovicus.generics.Pair;
-import com.lucasgueiros.ludovicus.generics.Triple;
 import com.lucasgueiros.ludovicus.maps.elements.FixedElement;
 
 public class Map {
@@ -46,9 +45,9 @@ public class Map {
       DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
       Document doc = dBuilder.parse(Map.class.getResourceAsStream(fileUrl));
 
-      Element viewSize = (Element) doc.getElementsByTagName("viewSize").item(0);
-      int x = Integer.parseInt(viewSize.getElementsByTagName("x").item(0).getTextContent());
-      int y = Integer.parseInt(viewSize.getElementsByTagName("y").item(0).getTextContent());
+      Element size = (Element) doc.getElementsByTagName("size").item(0);
+      int x = Integer.parseInt(size.getElementsByTagName("x").item(0).getTextContent());
+      int y = Integer.parseInt(size.getElementsByTagName("y").item(0).getTextContent());
       map = new Cell [x][y];
 
       Element zero = (Element) doc.getElementsByTagName("zero").item(0);
@@ -82,7 +81,7 @@ public class Map {
         Element treeNode = (Element) nodesObjects.item(i);
         int treex = Integer.parseInt(treeNode.getElementsByTagName("x").item(0).getTextContent());
         int treey = Integer.parseInt(treeNode.getElementsByTagName("y").item(0).getTextContent());
-        Tree tree = new Tree(new Triple(treex,treey,0));
+        Tree tree = new Tree(new Pair(treex,treey));
         objects.add(tree);
       }
     } catch (ParserConfigurationException e) {

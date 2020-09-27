@@ -2,7 +2,7 @@ package com.lucasgueiros.ludovicus.maps.elements;
 
 import java.awt.image.BufferedImage;
 
-import com.lucasgueiros.ludovicus.generics.Triple;
+import com.lucasgueiros.ludovicus.generics.Pair;
 
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
@@ -18,8 +18,8 @@ public class Tree extends FixedElement {
     }
   }
 
-  public Tree (Triple position){
-    super(position, new Triple(51,66,66));
+  public Tree (Pair position){
+    super(position, new Pair(51,66));
   }
 
   private TreeStatus status = TreeStatus.WHOLE;
