@@ -5,7 +5,7 @@ import java.awt.Image;
 import java.awt.image.ImageObserver;
 import javax.swing.ImageIcon;
 import java.awt.Graphics2D;
-import com.lucasgueiros.ludovicus.generics.Positionable;
+import com.lucasgueiros.ludovicus.generics.Drawable;
 import java.awt.BasicStroke;
 import java.awt.Toolkit;
 import java.awt.Color;
