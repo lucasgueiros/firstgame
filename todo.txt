@@ -1,9 +1,9 @@
  - coloque ground como uma classe comum que extende DRAWABLE porque tem grouds com comportamentos diferents (ex: abismo, mata quem chega perto! kkk)
    - talvez duas classes: DRAWABLE (que tem a posição e tamanho de desenho) e CORPO (tem posição e tamanho reais)
    - ground, por exemplo, só precisa ser CORPO, mas não Drawable.
- - existe dois sizes e duas positions para cada DRAWABLE
- - um é o size e position do desenhos (olhando inclinado!)
- - outro é o size e o position reais (olhando de cima)
+ - existe dois viewSizes e duas viewPositions para cada DRAWABLE
+ - um é o viewSize e viewPosition do desenhos (olhando inclinado!)
+ - outro é o viewSize e o viewPosition reais (olhando de cima)
  - é baseado no real que se faz:
    - ordem das coisas na hora de desenhar
    - colisões etc.

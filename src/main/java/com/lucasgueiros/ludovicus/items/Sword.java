@@ -12,6 +12,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.lucasgueiros.ludovicus.generics.Pair;
+import com.lucasgueiros.ludovicus.generics.Drawing;
+import com.lucasgueiros.ludovicus.generics.Triple;
+import com.lucasgueiros.ludovicus.generics.PositionedDrawing;
 
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
@@ -25,8 +28,9 @@ public class Sword extends Item {
 
   public SwordStatus status = SwordStatus.HANDLE;
 
-  public Sword(Pair position, Pair size) {
-    super(position, size);
+  public Sword(PositionedDrawing father) {
+    super(new Triple(0,0,0),new Triple(16,6,8),father);
+    super.setName("Sword");
   }
 
   public SwordStatus getStatus() {
@@ -52,7 +56,8 @@ public class Sword extends Item {
       default:
         image = SWORD_ATTACK;
     }
-    Pair relativePosition = super.position.relative(relativeTo);
+    Pair relativePosition = super.viewPosition.relative(relativeTo);
+    logger.atTrace().log("relativePosition of " + this.getName() + " : "+relativePosition);
     g.drawImage(image, relativePosition.x, relativePosition.y, null);
   }
   public void update() {
@@ -67,8 +72,10 @@ public class Sword extends Item {
     this.setStatus(SwordStatus.HANDLE);
   }
 
-  public void setPositionByHandPosition(Pair hand) {
-    this.position = hand.sum(this.isDoingAction() ? new Pair(1,-2) : new Pair(-1,-12));
+  public void setPositionByHandPosition(Triple handPosition) {
+    this.position = handPosition.sum(this.isDoingAction() ? new Triple(1,-2,0) : new Triple(-1,-12,0));
+    logger.atTrace().log("position of " + this.getName() + " : "+position);
+    copyPosition();
   }
 
 }

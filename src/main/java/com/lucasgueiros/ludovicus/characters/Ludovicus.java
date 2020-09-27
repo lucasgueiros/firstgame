@@ -9,23 +9,28 @@ import java.io.IOException;
 
 import com.lucasgueiros.ludovicus.items.Item;
 import com.lucasgueiros.ludovicus.generics.Pair;
+import com.lucasgueiros.ludovicus.generics.Triple;
+import com.lucasgueiros.ludovicus.generics.Drawing;
 
 import static com.lucasgueiros.ludovicus.services.ImageResources.getResource;
 
 public class Ludovicus extends Character {
 
-  final static Logger logger = LogManager.getLogger(Ludovicus.class);
+  private final static Logger logger = LogManager.getLogger(Ludovicus.class);
   private final static BufferedImage LUDOVICUS = getResource("/com/lucasgueiros/ludovicus/characters/ludovicus-front.png");
 
-  public Ludovicus(Pair position, Pair size, Pair move) {
-		super(position, size, move);
+  public Ludovicus(Triple position) {
+		super(position,new Triple(10,20,20));
+    super.setName("Ludovicus");
   }
   protected BufferedImage getImage() {
     return LUDOVICUS;
   }
 
-  protected Pair getHandPosition(){
-    return super.position.sum(new Pair(21,16));
+  protected Triple getHandPosition(){
+    Triple handPosition = super.position.sum(new Triple(21,29,29));
+    logger.atTrace().log("handPosition of " + this.getName() + " : " + handPosition);
+    return handPosition;
   }
 
 }

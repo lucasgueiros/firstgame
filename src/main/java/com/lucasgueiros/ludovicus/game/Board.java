@@ -22,27 +22,29 @@ import java.util.Collections;
 import com.lucasgueiros.ludovicus.maps.Map;
 import com.lucasgueiros.ludovicus.generics.Pair;
 
-public class Board extends JPanel implements Runnable {
+public class Board extends JPanel  {
 
   final static Logger logger = LogManager.getLogger(Board.class);
-  public List<PositionedDrawing> positionedDrawings;
+  private List<PositionedDrawing> drawings;
   private Map world;
   private PositionedDrawing ludovicus;
 
-  private Pair size = new Pair(900,500);
+  private Pair viewSize = new Pair(900,500);
   private Pair zero = null;
   private Pair inic = new Pair(50,50);
   private Pair fini = new Pair(850,450);
 
   public Board() {
     initBoard();
-    positionedDrawings = new ArrayList<>();
+    drawings = new ArrayList<>();
   }
 
   public void setWorld(Map world) {
     this.world = world;
     this.zero = this.world.getInicZero();
-    this.positionedDrawings.addAll(world.getObjects());
+    synchronized(drawings) {
+      this.drawings.addAll(world.getObjects());
+    }
   }
 
   private void addKeyListener (KeyAdapter keyAdapter) {
@@ -50,16 +52,20 @@ public class Board extends JPanel implements Runnable {
   }
 
   private void initBoard() {
-    setPreferredSize(new Dimension(size.x,size.y));
+    setPreferredSize(new Dimension(viewSize.x,viewSize.y));
   }
 
-  public void addDrawble(PositionedDrawing positionedDrawing) {
-    this.positionedDrawings.add(positionedDrawing);
+  public void addDrawble(PositionedDrawing drawing) {
+    synchronized(drawings) {
+      this.drawings.add(drawing);
+    }
   }
 
   public void cycle() {
-    for(PositionedDrawing positionedDrawing : positionedDrawings) {
-      positionedDrawing.update();
+    synchronized (drawings) {
+      for(PositionedDrawing viewPositionedDrawing : drawings) {
+        viewPositionedDrawing.update();
+      }
     }
   }
 
@@ -76,58 +82,17 @@ public class Board extends JPanel implements Runnable {
     Graphics2D g2d = (Graphics2D) g;
     zero = calcZero();
     world.draw(g2d,zero);
-    Collections.sort(positionedDrawings);
-    for(PositionedDrawing positionedDrawing : positionedDrawings) {
-      positionedDrawing.draw(g2d,zero);
-    }
-  }
 
-  // coppied from http://zetcode.com/javagames/animation/
-  private final int B_WIDTH = 350;
-  private final int B_HEIGHT = 350;
-  private final int INITIAL_X = -40;
-  private final int INITIAL_Y = -40;
-  private final int DELAY = 25;
-  private Thread animator;
-
-  @Override
-  public void addNotify() {
-      super.addNotify();
-
-      animator = new Thread(this);
-      animator.start();
-  }
-
-  @Override
-  public void run() {
-
-      long beforeTime, timeDiff, sleep;
-
-      beforeTime = System.currentTimeMillis();
-
-      while (true) {
-
-          cycle();
-          repaint();
-
-          timeDiff = System.currentTimeMillis() - beforeTime;
-          sleep = DELAY - timeDiff;
-
-          if (sleep < 0) {
-              sleep = 2;
-          }
-
-          try {
-              Thread.sleep(sleep);
-          } catch (InterruptedException e) {
-
-              String msg = String.format("Thread interrupted: %s", e.getMessage());
-              logger.atError().log(msg);
-          }
-
-          beforeTime = System.currentTimeMillis();
+    synchronized (drawings) {
+      Collections.sort(drawings);
+      for(PositionedDrawing drawing : drawings) {
+        drawing.draw(g2d,zero);
       }
+    }
+
   }
+
+
   public void setLudovicus(PositionedDrawing ludovicus) {
     this.ludovicus = ludovicus;
   }

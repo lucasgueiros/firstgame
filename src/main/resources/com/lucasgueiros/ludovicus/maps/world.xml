@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map>
   <name>world</name>
-  <size>
+  <viewSize>
     <x>80</x>
     <y>80</y>
-  </size>
+  </viewSize>
   <zero>
     <x>100</x>
     <y>100</y>

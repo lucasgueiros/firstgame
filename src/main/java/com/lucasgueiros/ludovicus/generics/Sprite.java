@@ -4,10 +4,11 @@ import com.lucasgueiros.ludovicus.items.Item;
 
 public abstract class Sprite extends PositionedDrawing {
 
-  private Pair move;
+  private Triple move;
 
   public void update () {
     super.position = super.position.sum(move);
+    copyPosition();
   }
 
 	// generated code
@@ -15,8 +16,8 @@ public abstract class Sprite extends PositionedDrawing {
 	/**
 	* Default Sprite constructor
 	*/
-	public Sprite(Pair position, Pair size, Pair move) {
-		super(position,size);
+	public Sprite(Triple position, Triple size, Triple move) {
+		super(position, size);
 		this.move = move;
 	}
 
@@ -24,7 +25,7 @@ public abstract class Sprite extends PositionedDrawing {
 	* Returns value of move
 	* @return
 	*/
-	public Pair getMove() {
+	public Triple getMove() {
 		return move;
 	}
 
@@ -32,7 +33,7 @@ public abstract class Sprite extends PositionedDrawing {
 	* Sets new value of move
 	* @param
 	*/
-	public void setMove(Pair move) {
+	public void setMove(Triple move) {
 		this.move = move;
 	}
 }

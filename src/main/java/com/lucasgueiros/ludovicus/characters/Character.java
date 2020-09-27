@@ -1,5 +1,8 @@
 package com.lucasgueiros.ludovicus.characters;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.image.ImageObserver;
@@ -16,21 +19,29 @@ import com.lucasgueiros.ludovicus.items.Item;
 import com.lucasgueiros.ludovicus.generics.Sprite;
 
 import com.lucasgueiros.ludovicus.generics.Pair;
+import com.lucasgueiros.ludovicus.generics.Triple;
+import com.lucasgueiros.ludovicus.generics.Drawing;
 
 public abstract class Character extends Sprite {
 
   protected abstract BufferedImage getImage();
 
-  protected abstract Pair getHandPosition();
+  private final static Logger logger = LogManager.getLogger(Character.class);
+
+  protected abstract Triple getHandPosition();
 
   public void update() {
     super.update();
   }
   public void draw(Graphics2D g, Pair relativeTo) {
     g = (Graphics2D) g.create();
-
+    logger.atTrace().log("position:  of " + this.getName() + " : " + this.position);
     BufferedImage image = this.getImage();
-    Pair relativePosition = super.position.relative(relativeTo);
+    copyPosition();
+    logger.atTrace().log("view position:  of " + this.getName() + " : " + this.viewPosition);
+    logger.atTrace().log("relative to:  of " + this.getName() + " : " + relativeTo);
+    Pair relativePosition = super.viewPosition.relative(relativeTo);
+    logger.atTrace().log("relativePosition:  of " + this.getName() + " : " + relativePosition);
     g.drawImage(image, relativePosition.x, relativePosition.y, null);
 
     if(this.itemDireito != null) {
@@ -50,8 +61,8 @@ public abstract class Character extends Sprite {
 		return itemDireito;
 	}
 
-  public Character(Pair position, Pair size, Pair move) {
-		super(position, size, move);
+  public Character(Triple position, Triple size) {
+		super(position, size, new Triple(0,0,0));
   }
 
 	/**
