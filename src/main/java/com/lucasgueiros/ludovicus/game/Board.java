@@ -17,7 +17,6 @@ import java.awt.image.BufferedImage;
 import java.awt.BasicStroke;
 import java.awt.Rectangle;
 import java.io.IOException;
-import java.util.Collections;
 
 import com.lucasgueiros.ludovicus.maps.Map;
 import com.lucasgueiros.ludovicus.generics.Pair;
@@ -76,7 +75,6 @@ public class Board extends JPanel implements Runnable {
     Graphics2D g2d = (Graphics2D) g;
     zero = calcZero();
     world.draw(g2d,zero);
-    Collections.sort(drawables);
     for(Drawable drawable : drawables) {
       drawable.draw(g2d,zero);
     }

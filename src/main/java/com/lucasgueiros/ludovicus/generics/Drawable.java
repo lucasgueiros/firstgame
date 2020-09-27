@@ -9,7 +9,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 
-public abstract class Drawable implements Comparable<Drawable> {
+public abstract class Drawable {
   private final static Logger logger = LogManager.getLogger(Drawable.class);
 
   protected Pair position;
@@ -20,11 +20,6 @@ public abstract class Drawable implements Comparable<Drawable> {
 
   public Pair getCenter() {
     return new Pair(position.x + (size.x / 2), position.y + (size.y / 2));
-  }
-
-  @Override
-  public int compareTo(Drawable other) {
-    return this.position.y - other.position.y;
   }
 
   // GENERATED CODE
