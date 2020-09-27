@@ -2,7 +2,7 @@ package com.lucasgueiros.ludovicus.generics;
 
 import com.lucasgueiros.ludovicus.items.Item;
 
-public abstract class Sprite extends PositionedDrawing {
+public abstract class Sprite extends Positionable {
 
   private Pair move;
 

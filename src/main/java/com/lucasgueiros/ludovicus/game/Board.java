@@ -2,7 +2,7 @@ package com.lucasgueiros.ludovicus.game;
 
 import java.awt.Graphics;
 import javax.swing.JPanel;
-import com.lucasgueiros.ludovicus.generics.PositionedDrawing;
+import com.lucasgueiros.ludovicus.generics.Positionable;
 import java.awt.Dimension;
 import java.awt.Graphics2D;
 import java.util.List;
@@ -25,9 +25,9 @@ import com.lucasgueiros.ludovicus.generics.Pair;
 public class Board extends JPanel implements Runnable {
 
   final static Logger logger = LogManager.getLogger(Board.class);
-  public List<PositionedDrawing> positionedDrawings;
+  public List<Positionable> positionables;
   private Map world;
-  private PositionedDrawing ludovicus;
+  private Positionable ludovicus;
 
   private Pair size = new Pair(900,500);
   private Pair zero = null;
@@ -36,13 +36,13 @@ public class Board extends JPanel implements Runnable {
 
   public Board() {
     initBoard();
-    positionedDrawings = new ArrayList<>();
+    positionables = new ArrayList<>();
   }
 
   public void setWorld(Map world) {
     this.world = world;
     this.zero = this.world.getInicZero();
-    this.positionedDrawings.addAll(world.getObjects());
+    this.positionables.addAll(world.getObjects());
   }
 
   private void addKeyListener (KeyAdapter keyAdapter) {
@@ -53,13 +53,13 @@ public class Board extends JPanel implements Runnable {
     setPreferredSize(new Dimension(size.x,size.y));
   }
 
-  public void addDrawble(PositionedDrawing positionedDrawing) {
-    this.positionedDrawings.add(positionedDrawing);
+  public void addDrawble(Positionable positionable) {
+    this.positionables.add(positionable);
   }
 
   public void cycle() {
-    for(PositionedDrawing positionedDrawing : positionedDrawings) {
-      positionedDrawing.update();
+    for(Positionable positionable : positionables) {
+      positionable.update();
     }
   }
 
@@ -76,9 +76,9 @@ public class Board extends JPanel implements Runnable {
     Graphics2D g2d = (Graphics2D) g;
     zero = calcZero();
     world.draw(g2d,zero);
-    Collections.sort(positionedDrawings);
-    for(PositionedDrawing positionedDrawing : positionedDrawings) {
-      positionedDrawing.draw(g2d,zero);
+    Collections.sort(positionables);
+    for(Positionable positionable : positionables) {
+      positionable.draw(g2d,zero);
     }
   }
 
@@ -128,7 +128,7 @@ public class Board extends JPanel implements Runnable {
           beforeTime = System.currentTimeMillis();
       }
   }
-  public void setLudovicus(PositionedDrawing ludovicus) {
+  public void setLudovicus(Positionable ludovicus) {
     this.ludovicus = ludovicus;
   }
 }
