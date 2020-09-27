@@ -31,6 +31,8 @@ public class Game extends JFrame
     setTitle("My first java game");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     setLocationRelativeTo(null);
+
+    new Thread(new Animator(board)).start();
   }
 
 
