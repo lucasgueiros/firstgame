@@ -25,6 +25,7 @@ import org.xml.sax.SAXException;
 import com.lucasgueiros.ludovicus.maps.elements.Tree;
 import com.lucasgueiros.ludovicus.generics.Pair;
 import com.lucasgueiros.ludovicus.maps.elements.FixedElement;
+import com.lucasgueiros.ludovicus.generics.Drawable;
 
 public class Map {
 
@@ -36,7 +37,7 @@ public class Map {
 
   private Pair inicZero;
 
-  private List<FixedElement> objects = new ArrayList<>();
+  private List<Drawable> objects = new ArrayList<>();
 
   public Map(String fileUrl) {
     try {
@@ -57,6 +58,7 @@ public class Map {
 
       Element ground = (Element) doc.getElementsByTagName("ground").item(0);
       NodeList lines = ground.getElementsByTagName("line");
+      int cellx = 0, celly = 0;
       for(int i = 0 ; i < x; i++) {
         String string = lines.item(i).getTextContent();
         for(int j = 0; j <y; j++) {
@@ -72,7 +74,14 @@ public class Map {
             default:
               map[i][j] = Cell.GRASS;
           }
+
+          if(!map[i][j].isPodePassar()) {
+            objects.add(new InvisibleCell(new Pair(cellx,celly)));
+          }
+          cellx += 25;
         }
+        celly += 25;
+        cellx = 0;
       }
 
       Element objectList = (Element) doc.getElementsByTagName("objects").item(0);
@@ -112,7 +121,7 @@ public class Map {
 
   }
 
-  public List<FixedElement> getObjects() {
+  public List<Drawable> getObjects() {
     return objects;
   }
 
