@@ -57,6 +57,26 @@ public class Board extends JPanel {
   }
 
   public void cycle() {
+    update();
+    check();
+    repaint();
+  }
+
+  public void check() {
+    for(int i = 0; i < drawables.size() ; i++) {
+      Rectangle ri = drawables.get(i).getRectangle();
+      for(int j = i+1 ; j <drawables.size() ; j++) {
+        Rectangle rj = drawables.get(j).getRectangle();
+        Rectangle rr = ri.intersection(rj);
+        if(!rr.isEmpty()) {
+          drawables.get(i).unmove();
+          drawables.get(j).unmove();
+        }
+      }
+    }
+  }
+
+  public void update() {
     for(Drawable drawable : drawables) {
       drawable.update();
     }

@@ -22,7 +22,6 @@ public class Animator implements Runnable {
       while (true) {
 
           board.cycle();
-          board.repaint();
 
           timeDiff = System.currentTimeMillis() - beforeTime;
           sleep = DELAY - timeDiff;

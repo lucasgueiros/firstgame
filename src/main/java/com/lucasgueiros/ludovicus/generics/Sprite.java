@@ -9,6 +9,9 @@ public abstract class Sprite extends Drawable {
   public void update () {
     super.position = super.position.sum(move);
   }
+  public void unmove() {
+    super.position = super.position.subtract(move);
+  }
 
 	// generated code
 

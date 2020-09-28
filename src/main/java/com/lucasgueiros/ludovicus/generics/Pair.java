@@ -17,6 +17,10 @@ public class Pair {
     return new Pair(this.x + sum.x, this.y + sum.y);
   }
 
+  public Pair subtract(Pair sum) {
+    return new Pair(this.x - sum.x, this.y - sum.y);
+  }
+
   public Pair setX(int x) {
     return new Pair(x, this.y);
   }

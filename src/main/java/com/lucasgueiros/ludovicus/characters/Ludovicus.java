@@ -17,8 +17,8 @@ public class Ludovicus extends Character {
   final static Logger logger = LogManager.getLogger(Ludovicus.class);
   private final static BufferedImage LUDOVICUS = getResource("/com/lucasgueiros/ludovicus/characters/ludovicus-front.png");
 
-  public Ludovicus(Pair position, Pair size, Pair move) {
-		super(position, size, move);
+  public Ludovicus(Pair position) {
+		super(position, new Pair(26,32), new Pair(0,0));
   }
   protected BufferedImage getImage() {
     return LUDOVICUS;
